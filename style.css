@@ -1,0 +1,1628 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5fbf6;
+  --card: #ffffff;
+  --text: #203127;
+  --muted: #66766b;
+
+  --green-1: #2f6b3b;
+  --green-2: #4f8f52;
+  --green-3: #76ad69;
+  --green-4: #9fca85;
+
+  --brown-1: #65422d;
+  --brown-2: #835a3c;
+
+  --soil: #78533c;
+
+  --sky-1: #c7edff;
+  --sky-2: #eefaff;
+
+  --sun-light: #fff7b2;
+  --sun-main: #ffd95a;
+  --sun-dark: #f4b63d;
+
+  --orange: #ffac45;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255,255,255,.9),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #eaf8ff 0%,
+      var(--bg) 48%,
+      #eef7ea 100%
+    );
+
+  color: var(--text);
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  width: min(1120px, 94vw);
+  margin: 0 auto;
+  padding: 34px 0 60px;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.hero {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--green-1);
+  font-weight: 900;
+  letter-spacing: .03em;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 1.12rem;
+}
+
+/* =====================================================
+   CARD UTAMA
+===================================================== */
+
+.stage-card,
+.closing-card {
+  background: rgba(255,255,255,.94);
+
+  border:
+    1px solid
+    rgba(55, 93, 63, .08);
+
+  box-shadow:
+    0 22px 60px
+    rgba(36, 74, 47, .13);
+
+  border-radius: 30px;
+}
+
+.stage-card {
+  padding: 22px;
+}
+
+/* =====================================================
+   INFO PANEL
+===================================================== */
+
+.info-panel {
+  min-height: 145px;
+
+  display: grid;
+
+  grid-template-columns:
+    66px 1fr;
+
+  align-items: start;
+
+  gap: 18px;
+
+  max-width: 900px;
+
+  margin:
+    0 auto 18px;
+}
+
+.step-badge {
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--green-1),
+      var(--green-2)
+    );
+
+  color: #fff;
+
+  font-weight: 1000;
+  font-size: 1.6rem;
+
+  box-shadow:
+    0 10px 24px
+    rgba(47,107,59,.22);
+}
+
+.step-kicker {
+  margin: 2px 0 3px;
+
+  color: var(--green-2);
+
+  font-weight: 1000;
+
+  letter-spacing: .12em;
+
+  font-size: .78rem;
+}
+
+.info-panel h2 {
+  margin: 0 0 6px;
+
+  font-size:
+    clamp(
+      1.6rem,
+      3vw,
+      2.25rem
+    );
+}
+
+.info-panel p:last-child {
+  margin: 0;
+
+  max-width: 810px;
+
+  color: var(--muted);
+
+  line-height: 1.6;
+
+  font-size: 1.03rem;
+}
+
+/* =====================================================
+   SCENE
+===================================================== */
+
+.scene {
+  position: relative;
+
+  height: 545px;
+
+  overflow: hidden;
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      var(--sky-1) 0%,
+      var(--sky-2) 66%,
+      #bee09c 66%,
+      #a7cf82 100%
+    );
+
+  isolation: isolate;
+}
+
+/* =====================================================
+   MATAHARI
+===================================================== */
+
+.sun {
+  position: absolute;
+
+  right: 58px;
+  top: 46px;
+
+  width: 78px;
+  height: 78px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      var(--sun-light) 0%,
+      var(--sun-main) 42%,
+      var(--sun-dark) 100%
+    );
+
+  box-shadow:
+    0 0 18px
+    rgba(255, 214, 83, .95),
+
+    0 0 40px
+    rgba(255, 195, 55, .55),
+
+    0 0 70px
+    rgba(255, 190, 45, .25);
+
+  animation:
+    sunPulse
+    4s ease-in-out
+    infinite;
+
+  z-index: 1;
+}
+
+/* sinar matahari */
+
+.ray {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 5px;
+  height: 23px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      #ffd45e,
+      rgba(255, 202, 74, .2)
+    );
+
+  transform-origin:
+    center 52px;
+}
+
+.ray-1 {
+  transform:
+    translate(-50%, -52px)
+    rotate(0deg);
+}
+
+.ray-2 {
+  transform:
+    translate(-50%, -52px)
+    rotate(45deg);
+}
+
+.ray-3 {
+  transform:
+    translate(-50%, -52px)
+    rotate(90deg);
+}
+
+.ray-4 {
+  transform:
+    translate(-50%, -52px)
+    rotate(135deg);
+}
+
+.ray-5 {
+  transform:
+    translate(-50%, -52px)
+    rotate(180deg);
+}
+
+.ray-6 {
+  transform:
+    translate(-50%, -52px)
+    rotate(225deg);
+}
+
+.ray-7 {
+  transform:
+    translate(-50%, -52px)
+    rotate(270deg);
+}
+
+.ray-8 {
+  transform:
+    translate(-50%, -52px)
+    rotate(315deg);
+}
+
+/* =====================================================
+   AWAN
+===================================================== */
+
+.cloud {
+  position: absolute;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      .92
+    );
+
+  font-size: 76px;
+
+  filter:
+    drop-shadow(
+      0 5px 8px
+      rgba(65, 111, 132, .09)
+    );
+
+  animation:
+    cloudMove
+    20s linear
+    infinite;
+
+  z-index: 1;
+}
+
+.cloud-1 {
+  left: -110px;
+  top: 55px;
+}
+
+.cloud-2 {
+  left: 30%;
+  top: 105px;
+
+  animation-duration: 28s;
+  animation-delay: -13s;
+
+  font-size: 58px;
+
+  opacity: .75;
+}
+
+/* =====================================================
+   ANGIN
+===================================================== */
+
+.wind-line {
+  position: absolute;
+
+  height: 3px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .68
+    );
+
+  border-radius: 999px;
+
+  opacity: 0;
+
+  z-index: 2;
+}
+
+.scene.state-crown .wind-line {
+  animation:
+    windPass
+    5s ease-in-out
+    infinite;
+}
+
+.w1 {
+  top: 165px;
+  left: -15%;
+
+  width: 110px;
+}
+
+.w2 {
+  top: 220px;
+  left: -28%;
+
+  width: 160px;
+
+  animation-delay:
+    1.6s !important;
+}
+
+.w3 {
+  top: 290px;
+  left: -20%;
+
+  width: 90px;
+
+  animation-delay:
+    3.1s !important;
+}
+
+/* =====================================================
+   TREE WRAPPER
+===================================================== */
+
+.tree-wrap {
+  position: absolute;
+
+  left: 50%;
+  bottom: 112px;
+
+  width: 560px;
+  height: 390px;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 3;
+}
+
+.tree-sway {
+  position: absolute;
+
+  inset: 0;
+
+  transform-origin:
+    50% 95%;
+}
+
+.scene.state-crown .tree-sway {
+  animation:
+    treeSway
+    4.5s ease-in-out
+    infinite;
+}
+
+/* =====================================================
+   BENIH
+===================================================== */
+
+.seed {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 34px;
+  height: 21px;
+
+  border-radius: 50%;
+
+  transform:
+    translateX(-50%)
+    rotate(-8deg);
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #9a6a46,
+      #5d3a28 70%
+    );
+
+  box-shadow:
+    0 5px 12px
+    rgba(57,36,25,.25);
+
+  transition:
+    opacity .5s ease,
+    transform .5s ease;
+}
+
+.seed::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 16px;
+
+  background: #4d8a4b;
+
+  border-radius: 8px;
+
+  left: 50%;
+  top: -10px;
+
+  transform:
+    translateX(-50%)
+    scaleY(0);
+
+  transform-origin:
+    bottom;
+
+  transition:
+    transform .55s ease;
+}
+
+.scene.state-roots
+.seed::after {
+  transform:
+    translateX(-50%)
+    scaleY(1);
+}
+
+.scene.state-trunk
+.seed {
+  opacity: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(15px)
+    scale(.4);
+}
+
+/* =====================================================
+   AKAR
+===================================================== */
+
+.roots {
+  position: absolute;
+
+  left: 50%;
+  bottom: -20px;
+
+  width: 360px;
+  height: 120px;
+
+  transform:
+    translateX(-50%);
+
+  opacity: 0;
+
+  transition:
+    opacity .45s ease;
+
+  z-index: 0;
+}
+
+.scene.state-roots
+.roots {
+  opacity: 1;
+}
+
+.root {
+  position: absolute;
+
+  left: 50%;
+  top: 38px;
+
+  width: 0;
+  height: 11px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #67452f,
+      #8b6243
+    );
+
+  transform-origin:
+    left center;
+
+  transition:
+    width
+    .85s
+    cubic-bezier(
+      .2,
+      .7,
+      .2,
+      1
+    );
+}
+
+.scene.state-roots .r1 {
+  width: 145px;
+  transition-delay: .05s;
+}
+
+.scene.state-roots .r2 {
+  width: 132px;
+  transition-delay: .12s;
+}
+
+.scene.state-roots .r3 {
+  width: 118px;
+  transition-delay: .2s;
+}
+
+.scene.state-roots .r4 {
+  width: 135px;
+  transition-delay: .28s;
+}
+
+.scene.state-roots .r5 {
+  width: 92px;
+  transition-delay: .35s;
+}
+
+.scene.state-roots .r6 {
+  width: 98px;
+  transition-delay: .42s;
+}
+
+.r1 {
+  transform: rotate(14deg);
+}
+
+.r2 {
+  transform: rotate(166deg);
+}
+
+.r3 {
+  top: 60px;
+  transform: rotate(33deg);
+}
+
+.r4 {
+  top: 60px;
+  transform: rotate(147deg);
+}
+
+.r5 {
+  top: 18px;
+  transform: rotate(-18deg);
+}
+
+.r6 {
+  top: 18px;
+  transform: rotate(198deg);
+}
+
+.root-text {
+  position: absolute;
+
+  width: 100%;
+
+  bottom: -6px;
+
+  text-align: center;
+
+  color: #fff;
+
+  font-size: .72rem;
+
+  font-weight: 1000;
+
+  letter-spacing: .05em;
+
+  opacity: 0;
+
+  transform:
+    translateY(8px);
+
+  transition:
+    all .5s ease .7s;
+}
+
+.scene.state-roots
+.root-text {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+/* =====================================================
+   BATANG
+===================================================== */
+
+.trunk {
+  position: absolute;
+
+  left: 50%;
+  bottom: 10px;
+
+  width: 66px;
+  height: 0;
+
+  border-radius:
+    32px 32px 10px 10px;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--brown-1),
+      var(--brown-2) 40%,
+      #936848 62%,
+      #68452f
+    );
+
+  box-shadow:
+    inset -8px 0 0
+    rgba(67, 42, 29, .1);
+
+  transition:
+    height
+    1s
+    cubic-bezier(
+      .16,
+      .75,
+      .25,
+      1.15
+    );
+
+  z-index: 2;
+}
+
+.scene.state-trunk
+.trunk {
+  height: 238px;
+}
+
+.trunk-highlight {
+  position: absolute;
+
+  top: 25px;
+  left: 15px;
+
+  width: 7px;
+  height: 65%;
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .08
+    );
+}
+
+/* =====================================================
+   CABANG
+===================================================== */
+
+.branch {
+  position: absolute;
+
+  left: 50%;
+
+  height: 21px;
+
+  width: 0;
+
+  border-radius: 999px;
+
+  background:
+    var(--brown-2);
+
+  transform-origin:
+    left center;
+
+  z-index: 1;
+
+  transition:
+    width
+    .7s
+    cubic-bezier(
+      .2,
+      .75,
+      .2,
+      1
+    );
+}
+
+.b1 {
+  bottom: 172px;
+
+  transform:
+    translateX(-7px)
+    rotate(-29deg);
+}
+
+.b2 {
+  bottom: 195px;
+
+  transform:
+    translateX(6px)
+    rotate(205deg);
+}
+
+.b3 {
+  bottom: 128px;
+
+  transform:
+    translateX(-2px)
+    rotate(-42deg);
+}
+
+.b4 {
+  bottom: 140px;
+
+  transform:
+    translateX(4px)
+    rotate(220deg);
+}
+
+.scene.state-branches
+.b1 {
+  width: 154px;
+  transition-delay: .05s;
+}
+
+.scene.state-branches
+.b2 {
+  width: 160px;
+  transition-delay: .15s;
+}
+
+.scene.state-branches
+.b3 {
+  width: 105px;
+  transition-delay: .28s;
+}
+
+.scene.state-branches
+.b4 {
+  width: 115px;
+  transition-delay: .38s;
+}
+
+/* =====================================================
+   MAHKOTA / DAUN
+===================================================== */
+
+.leaf-cloud {
+  position: absolute;
+
+  width: 150px;
+  height: 125px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      #89bd70,
+      #4f8f52 65%,
+      #397543
+    );
+
+  opacity: 0;
+
+  transform:
+    scale(.15);
+
+  transition:
+    transform
+    .75s
+    cubic-bezier(
+      .15,
+      .8,
+      .24,
+      1.4
+    ),
+
+    opacity
+    .45s ease;
+
+  z-index: 4;
+
+  box-shadow:
+    inset
+    -10px
+    -9px
+    0
+    rgba(32, 91, 44, .06);
+}
+
+.lc1 {
+  left: 92px;
+  top: 35px;
+}
+
+.lc2 {
+  left: 205px;
+  top: 2px;
+}
+
+.lc3 {
+  right: 88px;
+  top: 48px;
+}
+
+.lc4 {
+  left: 155px;
+  top: 92px;
+}
+
+.lc5 {
+  right: 153px;
+  top: 104px;
+}
+
+.scene.state-crown
+.leaf-cloud {
+  opacity: 1;
+
+  transform:
+    scale(1);
+}
+
+.scene.state-crown .lc1 {
+  transition-delay: .05s;
+}
+
+.scene.state-crown .lc2 {
+  transition-delay: .14s;
+}
+
+.scene.state-crown .lc3 {
+  transition-delay: .23s;
+}
+
+.scene.state-crown .lc4 {
+  transition-delay: .32s;
+}
+
+.scene.state-crown .lc5 {
+  transition-delay: .41s;
+}
+
+/* =====================================================
+   LABEL DAUN
+===================================================== */
+
+.tag {
+  position: absolute;
+
+  z-index: 7;
+
+  padding:
+    8px 12px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .95
+    );
+
+  color:
+    var(--green-1);
+
+  box-shadow:
+    0 6px 18px
+    rgba(49, 84, 57, .15);
+
+  font-weight: 900;
+
+  font-size: .79rem;
+
+  opacity: 0;
+
+  transform:
+    translateY(8px)
+    scale(.85);
+
+  transition:
+    all .4s ease;
+}
+
+.scene.state-crown
+.tag {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+.t1 {
+  left: 112px;
+  top: 82px;
+}
+
+.t2 {
+  left: 223px;
+  top: 30px;
+}
+
+.t3 {
+  right: 96px;
+  top: 94px;
+}
+
+.t4 {
+  left: 173px;
+  top: 150px;
+}
+
+.t5 {
+  right: 163px;
+  top: 155px;
+}
+
+.t6 {
+  left: 268px;
+  top: 110px;
+}
+
+/* =====================================================
+   BUAH
+===================================================== */
+
+.fruit {
+  position: absolute;
+
+  z-index: 8;
+
+  display: grid;
+
+  place-items: center;
+
+  min-width: 62px;
+  min-height: 62px;
+
+  padding: 8px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #ffd77b,
+      var(--orange) 70%
+    );
+
+  color: #5c3609;
+
+  font-weight: 1000;
+
+  font-size: .74rem;
+
+  box-shadow:
+    0 7px 18px
+    rgba(94,59,15,.22);
+
+  opacity: 0;
+
+  transform:
+    translateY(-18px)
+    scale(.2);
+
+  transition:
+    all
+    .52s
+    cubic-bezier(
+      .14,
+      .8,
+      .25,
+      1.45
+    );
+}
+
+.scene.state-fruits
+.fruit {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+.scene.state-fruits .f1 {
+  transition-delay: .05s;
+}
+
+.scene.state-fruits .f2 {
+  transition-delay: .16s;
+}
+
+.scene.state-fruits .f3 {
+  transition-delay: .27s;
+}
+
+.scene.state-fruits .f4 {
+  transition-delay: .38s;
+}
+
+.f1 {
+  left: 145px;
+  top: 98px;
+}
+
+.f2 {
+  right: 134px;
+  top: 79px;
+}
+
+.f3 {
+  left: 224px;
+  top: 157px;
+}
+
+.f4 {
+  right: 190px;
+  top: 18px;
+}
+
+/* =====================================================
+   TANAH
+===================================================== */
+
+.ground {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 130px;
+
+  background:
+    linear-gradient(
+      #9ec878 0 24%,
+      var(--soil) 24%
+    );
+
+  z-index: 1;
+}
+
+.grass {
+  position: absolute;
+
+  left: 0;
+  bottom: 96px;
+
+  width: 100%;
+  height: 45px;
+
+  opacity: .45;
+
+  z-index: 2;
+
+  background:
+    repeating-linear-gradient(
+      78deg,
+      transparent 0 13px,
+      rgba(67, 116, 53, .5)
+      14px 17px,
+      transparent
+      18px 26px
+    );
+}
+
+/* =====================================================
+   PESAN BAWAH
+===================================================== */
+
+.bottom-message {
+  position: absolute;
+
+  left: 50%;
+  bottom: 21px;
+
+  transform:
+    translateX(-50%);
+
+  width:
+    min(
+      88%,
+      720px
+    );
+
+  z-index: 5;
+
+  text-align: center;
+
+  color: #fff;
+
+  font-weight: 900;
+
+  letter-spacing: .01em;
+}
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-wrap {
+  max-width: 820px;
+
+  margin:
+    22px auto 0;
+}
+
+.progress-track {
+  height: 8px;
+
+  background:
+    #e8efe8;
+
+  border-radius:
+    999px;
+
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0%;
+
+  height: 100%;
+
+  border-radius:
+    inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--green-2),
+      var(--green-3)
+    );
+
+  transition:
+    width .45s ease;
+}
+
+.progress-dots {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  margin-top: -13px;
+}
+
+.dot {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  border:
+    3px solid
+    #dce8dc;
+
+  background: #fff;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  transition:
+    all .25s ease;
+}
+
+.dot.active,
+.dot.done {
+  background:
+    var(--green-2);
+
+  border-color: #fff;
+
+  box-shadow:
+    0 0 0 3px
+    var(--green-3);
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.controls {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+.controls button {
+  border: 0;
+
+  border-radius: 15px;
+
+  padding:
+    13px 20px;
+
+  font-weight: 1000;
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    opacity .2s ease;
+}
+
+.controls button:not(:disabled):hover {
+  transform:
+    translateY(-2px);
+}
+
+.primary {
+  background:
+    linear-gradient(
+      135deg,
+      var(--green-1),
+      var(--green-2)
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 10px 20px
+    rgba(47,107,59,.22);
+}
+
+.secondary {
+  background:
+    #edf5ee;
+
+  color:
+    var(--green-1);
+}
+
+.ghost {
+  background:
+    #f6f6f3;
+
+  color:
+    #687069;
+}
+
+.controls button:disabled {
+  opacity: .4;
+
+  cursor:
+    not-allowed;
+}
+
+/* =====================================================
+   MAKNA
+===================================================== */
+
+.meaning-card {
+  max-width: 830px;
+
+  margin:
+    20px auto 4px;
+
+  padding:
+    17px 20px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f3f9f2,
+      #fbfdf9
+    );
+
+  border:
+    1px solid
+    #e0ece0;
+}
+
+.meaning-title {
+  margin:
+    0 0 4px;
+
+  color:
+    var(--green-1);
+
+  font-size: .78rem;
+
+  font-weight: 1000;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing: .08em;
+}
+
+#meaningText {
+  margin: 0;
+
+  color:
+    var(--muted);
+
+  line-height: 1.55;
+
+  font-weight: 700;
+}
+
+/* =====================================================
+   PENUTUP
+===================================================== */
+
+.closing-card {
+  margin-top: 22px;
+
+  padding: 28px;
+
+  text-align: center;
+}
+
+.closing-small {
+  margin:
+    0 0 6px;
+
+  color:
+    var(--green-2);
+
+  font-weight: 1000;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing: .1em;
+
+  font-size: .8rem;
+}
+
+.closing-card h2 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      1.7rem,
+      4vw,
+      2.5rem
+    );
+}
+
+.closing-card p:last-child {
+  max-width: 730px;
+
+  margin:
+    12px auto 0;
+
+  color:
+    var(--muted);
+
+  line-height: 1.6;
+}
+
+/* =====================================================
+   ANIMASI
+===================================================== */
+
+@keyframes cloudMove {
+
+  from {
+    transform:
+      translateX(-10px);
+  }
+
+  to {
+    transform:
+      translateX(125vw);
+  }
+
+}
+
+@keyframes sunPulse {
+
+  0%,
+  100% {
+    transform:
+      scale(1);
+  }
+
+  50% {
+    transform:
+      scale(1.08);
+  }
+
+}
+
+@keyframes treeSway {
+
+  0%,
+  100% {
+    transform:
+      rotate(-1deg);
+  }
+
+  50% {
+    transform:
+      rotate(1.2deg);
+  }
+
+}
+
+@keyframes windPass {
+
+  0% {
+    left: -20%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: .75;
+  }
+
+  75% {
+    opacity: .55;
+  }
+
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 760px) {
+
+  .scene {
+    height: 500px;
+  }
+
+  .tree-wrap {
+    transform:
+      translateX(-50%)
+      scale(.8);
+
+    bottom: 90px;
+  }
+
+  .info-panel {
+    grid-template-columns:
+      52px 1fr;
+  }
+
+  .step-badge {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 15px;
+
+    font-size: 1.25rem;
+  }
+
+  .sun {
+    right: 35px;
+    top: 40px;
+
+    width: 62px;
+    height: 62px;
+  }
+
+  .ray {
+    height: 18px;
+
+    transform-origin:
+      center 42px;
+  }
+
+  .controls {
+    gap: 8px;
+  }
+
+  .controls button {
+    padding:
+      12px 15px;
+  }
+
+}

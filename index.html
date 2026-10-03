@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aku Bertumbuh, Aku Tetap Aku</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">Katekisasi Anak Madya GKJW Mulyosari</p>
+      <h1>🌱 Aku Bertumbuh, Aku Tetap Aku</h1>
+      <p class="subtitle">Bertumbuh tinggi, berakar kuat di dalam Tuhan.</p>
+    </header>
+
+    <section class="stage-card">
+      <div class="info-panel">
+        <div class="step-badge" id="stepBadge">1</div>
+
+        <div>
+          <p class="step-kicker" id="stepKicker">BENIH</p>
+          <h2 id="messageTitle">Tuhan Memberi Hidup</h2>
+          <p id="messageText">
+            Seperti benih kecil yang siap bertumbuh, Tuhan memberi kita hidup,
+            kemampuan, dan kesempatan untuk berkembang.
+          </p>
+        </div>
+      </div>
+
+      <div class="scene" id="scene">
+
+        <!-- AWAN -->
+        <div class="cloud cloud-1">☁</div>
+        <div class="cloud cloud-2">☁</div>
+
+        <!-- MATAHARI CSS -->
+        <div class="sun">
+          <span class="ray ray-1"></span>
+          <span class="ray ray-2"></span>
+          <span class="ray ray-3"></span>
+          <span class="ray ray-4"></span>
+          <span class="ray ray-5"></span>
+          <span class="ray ray-6"></span>
+          <span class="ray ray-7"></span>
+          <span class="ray ray-8"></span>
+        </div>
+
+        <!-- GARIS ANGIN -->
+        <div class="wind-line w1"></div>
+        <div class="wind-line w2"></div>
+        <div class="wind-line w3"></div>
+
+        <!-- POHON -->
+        <div class="tree-wrap" id="treeWrap">
+
+          <div class="tree-sway">
+
+            <!-- BATANG -->
+            <div class="trunk" id="trunk">
+              <div class="trunk-highlight"></div>
+            </div>
+
+            <!-- CABANG -->
+            <div class="branch b1"></div>
+            <div class="branch b2"></div>
+            <div class="branch b3"></div>
+            <div class="branch b4"></div>
+
+            <!-- DAUN / MAHKOTA -->
+            <div class="leaf-cloud lc1"></div>
+            <div class="leaf-cloud lc2"></div>
+            <div class="leaf-cloud lc3"></div>
+            <div class="leaf-cloud lc4"></div>
+            <div class="leaf-cloud lc5"></div>
+
+            <!-- LABEL DUNIA YANG BERUBAH -->
+            <div class="labels" id="labels">
+              <span class="tag t1">Teknologi</span>
+              <span class="tag t2">Sekolah</span>
+              <span class="tag t3">Teman</span>
+              <span class="tag t4">Game</span>
+              <span class="tag t5">AI</span>
+              <span class="tag t6">Media</span>
+            </div>
+
+            <!-- BUAH -->
+            <div class="fruits" id="fruits">
+              <span class="fruit f1">Kasih</span>
+              <span class="fruit f2">Jujur</span>
+              <span class="fruit f3">Peduli</span>
+              <span class="fruit f4">Berani</span>
+            </div>
+
+          </div>
+
+          <!-- BENIH -->
+          <div class="seed" id="seed"></div>
+
+          <!-- AKAR -->
+          <div class="roots" id="roots">
+            <span class="root r1"></span>
+            <span class="root r2"></span>
+            <span class="root r3"></span>
+            <span class="root r4"></span>
+            <span class="root r5"></span>
+            <span class="root r6"></span>
+
+            <div class="root-text">
+              IMAN • DOA • FIRMAN • KELUARGA • GEREJA
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TANAH -->
+        <div class="grass grass-back"></div>
+        <div class="ground"></div>
+
+        <!-- PESAN BAWAH -->
+        <div class="bottom-message" id="bottomMessage">
+          Klik tombol untuk melihat bagaimana iman kita bertumbuh.
+        </div>
+
+      </div>
+
+      <!-- PROGRESS -->
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="progress-dots">
+          <button class="dot active" data-step="0" title="Benih"></button>
+          <button class="dot" data-step="1" title="Akar"></button>
+          <button class="dot" data-step="2" title="Batang"></button>
+          <button class="dot" data-step="3" title="Cabang"></button>
+          <button class="dot" data-step="4" title="Daun"></button>
+          <button class="dot" data-step="5" title="Buah"></button>
+        </div>
+      </div>
+
+      <!-- TOMBOL -->
+      <div class="controls">
+        <button id="prevBtn" class="secondary" disabled>
+          ← Sebelumnya
+        </button>
+
+        <button id="growBtn" class="primary">
+          Mulai Bertumbuh 🌱
+        </button>
+
+        <button id="resetBtn" class="ghost">
+          Ulangi
+        </button>
+      </div>
+
+      <!-- MAKNA -->
+      <div class="meaning-card">
+        <p class="meaning-title">Makna tahap ini</p>
+        <p id="meaningText">
+          Tuhan adalah sumber hidup kita.
+          Dari-Nya kita mulai belajar dan bertumbuh.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- PENUTUP -->
+    <section class="closing-card">
+      <p class="closing-small">Pesan utama</p>
+
+      <h2>🌳 Bertumbuh tinggi, berakar kuat.</h2>
+
+      <p>
+        Aku boleh belajar banyak hal baru dan mengikuti perkembangan zaman,
+        tetapi aku tetap berakar kuat di dalam Tuhan.
+      </p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
